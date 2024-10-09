@@ -1,18 +1,15 @@
 resource "google_compute_instance" "default" {
-     name         = "my-vm"
-    machine_type = "n1-standard-1"
-    project = "testing-one-437506"
-    zone         = "us-central1-a"
-    boot_disk {
-      initialize_params {
-        image = "ubuntu-minimal-2210-kinetic-amd64-v20230126"
-      }
+  name         = var.name
+  machine_type = var.machine_type
+  project      = var.project
+  zone         = var.zone
+  boot_disk {
+    initialize_params {
+      image = var.boot_disk
     }
-    network_interface {
-      network = "default"
-      access_config {
-        
-      }
-    }
+  }
+  network_interface {
+    network = var.network_interface
+  }
   
 }
